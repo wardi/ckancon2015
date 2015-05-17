@@ -106,20 +106,83 @@ bulk actions
 
 .. code-block:: bash
 
-    ckanapi load datasets -p 6
-    ckanapi load organizations -p 6
-    ckanapi load groups -p 6
+    ckanapi load datasets -p 3
+    ckanapi load organizations -p 3
+    ckanapi load groups -p 3
 
 pipelining
 ----------
 
 .. code-block:: bash
 
-    ckanapi dump datasets | ssh otherbox ckanapi load datasets -p 6
+    ckanapi dump datasets | ssh otherbox ckanapi load datasets -p 3
 
 local + remote
 --------------
 
 .. code-block:: bash
 
-    ckanapi dump datasets -r http://sourceckan | ckanapi load datasets -p 6
+    ckanapi dump datasets -r http://sourceckan | ckanapi load datasets -p 3
+
+command-line client
+-------------------
+
+.. code-block:: bash
+
+    pip install ckanapi
+
+layers of ckan
+--------------
+
+* templates
+* controllers
+* actions <- ckanapi
+* plugins
+* core
+
+layers of ckan
+--------------
+
+* templates
+* controllers
+* actions
+* plugins <- ckanext-scheming
+* core
+
+IDatasetForm is awesome
+-----------------------
+
+* define one or more dataset types
+* custom templates for edit + show
+* new metadata fields
+* custom validation rules for dataset + resource fields
+
+IDatasetForm is hard
+--------------------
+
+* Python plugin code
+* nested Jinja2 templates with macros
+* navl schema
+* navl validators
+
+ckanext-scheming is easier
+--------------------------
+
+* No code required
+* Templates for common field types included
+* Combined JSON or YAML schema
+* Add validators with a simple IValidators plugin
+
+ckanext-scheming is sharable
+----------------------------
+
+* scheming_dataset_schema_list
+* scheming_dataset_schema_show
+
+
+
+future
+------
+
+* IGroupForm for groups and organizations
+
