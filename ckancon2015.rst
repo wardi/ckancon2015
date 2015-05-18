@@ -163,13 +163,37 @@ track metadata in git
     datasets.jsonl | 52 ++++++++++++++++++++++++++++++++++++----------------
     1 file changed, 36 insertions(+), 16 deletions(-)
 
-moar parallel
--------------
+distributed load
+----------------
 
 .. code-block:: bash
 
-    wc -l datasets.jsonl
+    split -n l/3 datasets.jsonl
+    ckanapi load datasets -r http://web1 -a ... < xaa &
+    ckanapi load datasets -r http://web2 -a ... < xab &
+    ckanapi load datasets -r http://web3 -a ... < xac &
 
+summaries
+---------
+
+.. code-block:: bash
+
+    head -5 datasets.jsonl | jq .title
+
+    "Exports of Dairy Products by Country of Destination Dairy Year 2001/02"
+    "Historical Border Wait Times"
+    "Number of Head Slaughtered in Federally Inspected Plants 2009 Hogs"
+    "Canadian Dairy Exports Month Calendar Year 2001 September"
+    "Federal Corporations"
+
+reports
+-------
+
+.. code-block:: bash
+
+    jq 'select(.organization.name!="nrcan-rncan")' -c datasets.jsonl | wc -l
+
+    8613
 
 command-line client
 -------------------
