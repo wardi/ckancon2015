@@ -14,17 +14,17 @@ http://open.canada.ca/
 http://ckan.org/
 
 
-I <3 ckan
----------
+I ♥ ckan
+--------
 
-I <3 ckan
----------
+I ♥ ckan
+--------
 
 .. image:: ckan-layers0.png
    :scale: 150%
 
-I <3 ckan
----------
+I ♥ ckan
+--------
 
 .. image:: ckan-layers1.png
    :scale: 150%
@@ -65,6 +65,7 @@ universal
 * python 2.6, 2.7, 3.2, 3.3, 3.4 (source-compatible)
 * generic, no per-action custom code
 * same interface for use
+
   * from core or extensions: LocalCKAN
   * for remote API calls: RemoteCKAN
   * in tests: TestAppCKAN
