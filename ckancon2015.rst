@@ -17,14 +17,14 @@ http://ckan.org/
 I ♥ ckan
 --------
 
-I ♥ ckan
---------
+layers of ckan
+--------------
 
 .. image:: ckan-layers0.png
    :scale: 150%
 
-I ♥ ckan
---------
+extending ckan
+--------------
 
 .. image:: ckan-layers1.png
    :scale: 150%
@@ -77,6 +77,10 @@ core?
 
 ckanapi python library
 ----------------------
+
+.. code-block:: bash
+
+    pip install ckanapi
 
 .. code-block:: python
 
@@ -131,14 +135,41 @@ pipelining
 
 .. code-block:: bash
 
-    ckanapi dump datasets | ssh otherbox ckanapi load datasets -p 3
+    ckanapi dump datasets \
+        | ssh otherbox ckanapi load datasets -p 3
 
 local + remote
 --------------
 
 .. code-block:: bash
 
-    ckanapi dump datasets -r http://sourceckan | ckanapi load datasets -p 3
+    ckanapi dump datasets -r http://sourceckan \
+        | ckanapi load datasets -p 3
+
+bulk data tricks
+----------------
+
+* JSON Lines
+* consistent order and sorted keys
+
+track metadata in git
+---------------------
+
+.. code-block:: bash
+
+    ckanapi dump datasets > datasets.jsonl
+    git diff datasets.jsonl --stat
+
+    datasets.jsonl | 52 ++++++++++++++++++++++++++++++++++++----------------
+    1 file changed, 36 insertions(+), 16 deletions(-)
+
+moar parallel
+-------------
+
+.. code-block:: bash
+
+    wc -l datasets.jsonl
+
 
 command-line client
 -------------------
@@ -146,24 +177,19 @@ command-line client
 .. code-block:: bash
 
     pip install ckanapi
+    ckanapi -h
 
 layers of ckan
 --------------
 
-* templates
-* controllers
-* actions <- ckanapi
-* plugins
-* core
+.. image:: ckan-layers2.png
+   :scale: 150%
 
 layers of ckan
 --------------
 
-* templates
-* controllers
-* actions
-* plugins <- ckanext-scheming
-* core
+.. image:: ckan-layers3.png
+   :scale: 150%
 
 IDatasetForm is awesome
 -----------------------
@@ -201,4 +227,8 @@ future
 ------
 
 * IGroupForm for groups and organizations
+* ckanext-fluent
+* http://open.canada.ca
+
+
 
