@@ -14,6 +14,21 @@ http://open.canada.ca/
 http://ckan.org/
 
 
+I <3 ckan
+---------
+
+I <3 ckan
+---------
+
+.. image:: ckan-layers0.png
+   :scale: 150%
+
+I <3 ckan
+---------
+
+.. image:: ckan-layers1.png
+   :scale: 150%
+
 ckanapi
 -------
 
