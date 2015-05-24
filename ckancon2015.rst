@@ -3,27 +3,81 @@
 ckanapi and ckanext-scheming
 ----------------------------
 
-CKANCON 2015
+CKANCon 2015
+============
 
 Ian Ward
+~~~~~~~~
 
-http://datacats.com/
+`open.canada.ca <http://open.canada.ca/>`_
 
-http://open.canada.ca/
+`www.datacats.com <http://www.datacats.com/>`_
 
-http://ckan.org/
+Python + Open Source Developer
+------------------------------
 
+`github.com/wardi <https://github.com/wardi>`_
 
-I ♥ ckan
+CKAN Core
+---------
+
+.. image:: contributions.png
+   :scale: 50%
+
+open.canada.ca
+--------------
+
+.. image:: opencanada.png
+   :scale: 40%
+
+ckanext-fluent
+--------------
+
+`github.com/open-data/ckanext-fluent <https://github.com/open-data/ckanext-fluent>`_
+
+ckanext-recombinant
+-------------------
+
+`github.com/open-data/ckanext-recombinant <https://github.com/open-data/ckanext-recombinant>`_
+
+CKAN Multisite
+--------------
+
+`github.com/boxkite/ckan-multisite <https://github.com/boxkite/ckan-multisite/>`_
+
+.. image:: ckan-multisite.png
+   :scale: 180%
+
+datacats
 --------
 
-layers of ckan
---------------
+`github.com/datacats/datacats <https://github.com/datacats/datacats>`_
+
+www.datacats.com
+----------------
+
+<image>
+
+ckanapi
+-------
+
+`github.com/ckan/ckanapi <https://github.com/ckan/ckanapi>`_
+
+ckanext-scheming
+----------------
+
+`github.com/open-data/ckanext-scheming <https://github.com/open-data/ckanext-scheming>`_
+
+I ♥ CKAN
+--------
+
+CKAN Layers
+-----------
 
 .. image:: ckan-layers0.png
    :scale: 50%
 
-extending ckan
+Extending CKAN
 --------------
 
 .. image:: ckan-layers1.png
@@ -146,7 +200,7 @@ local + remote
     ckanapi dump datasets -r http://sourceckan \
         | ckanapi load datasets -p 3
 
-bulk data tricks
+Bulk Data Format
 ----------------
 
 * JSON Lines
