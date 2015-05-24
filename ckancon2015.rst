@@ -21,13 +21,13 @@ layers of ckan
 --------------
 
 .. image:: ckan-layers0.png
-   :scale: 150%
+   :scale: 50%
 
 extending ckan
 --------------
 
 .. image:: ckan-layers1.png
-   :scale: 150%
+   :scale: 50%
 
 ckanapi
 -------
@@ -207,13 +207,14 @@ layers of ckan
 --------------
 
 .. image:: ckan-layers2.png
-   :scale: 150%
+   :scale: 50%
 
 layers of ckan
 --------------
 
 .. image:: ckan-layers3.png
-   :scale: 150%
+   :scale: 50%
+
 
 IDatasetForm is awesome
 -----------------------
