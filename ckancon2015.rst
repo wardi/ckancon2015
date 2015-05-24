@@ -13,12 +13,15 @@ Ian Ward
 
 `www.datacats.com <http://www.datacats.com/>`_
 
-Python + Open Source Developer
+Python + Open Source developer
 ------------------------------
 
 `github.com/wardi <https://github.com/wardi>`_
 
-CKAN Core
+.. image:: all-contributions.png
+   :scale: 50%
+
+CKAN core
 ---------
 
 .. image:: contributions.png
@@ -34,6 +37,16 @@ ckanext-fluent
 --------------
 
 `github.com/open-data/ckanext-fluent <https://github.com/open-data/ckanext-fluent>`_
+
+.. image:: multilingual-form.png
+   :scale: 70%
+
+.. image:: multilingual-display.png
+   :scale: 70%
+
+.. code-block:: json
+
+    "books": {"en": "Franklin", "fr": "Benjamin"}
 
 ckanext-recombinant
 -------------------
@@ -53,15 +66,20 @@ datacats
 
 `github.com/datacats/datacats <https://github.com/datacats/datacats>`_
 
+.. image:: datacats-ref.png
+   :scale: 48%
+
 www.datacats.com
 ----------------
 
-<image>
+.. image:: datacats.png
+   :scale: 48%
 
 ckanapi
 -------
 
 `github.com/ckan/ckanapi <https://github.com/ckan/ckanapi>`_
+
 
 ckanext-scheming
 ----------------
@@ -71,7 +89,7 @@ ckanext-scheming
 I ♥ CKAN
 --------
 
-CKAN Layers
+CKAN layers
 -----------
 
 .. image:: ckan-layers0.png
@@ -86,16 +104,16 @@ Extending CKAN
 ckanapi
 -------
 
-https://github.com/ckan/ckanapi
+`github.com/ckan/ckanapi <https://github.com/ckan/ckanapi>`_
 
-* a python library for calling ckan actions
-* a command-line client for calling ckan actions
+1. Python library for calling ckan actions
+2. Command-line client for calling ckan actions
 
 
-python library
+Python library
 --------------
 
-* pass strings, lists, dicts, file objects like normal method calls
+pass strings, lists, dicts, file objects like normal method calls
 
 .. code-block:: python
 
@@ -106,14 +124,14 @@ python library
         ckan.action.package_create(name='best-dataset', title='Best evar')
         ckan.action.resource_create(package_id='best-dataset', upload=csv)
 
-safe
+Safe
 ----
 
 * raises exceptions on errors, no manual error checking
 * clean context and data_dict for every call
 * has great test coverage
 
-universal
+Universal
 ---------
 
 * python 2.6, 2.7, 3.2, 3.3, 3.4 (source-compatible)
@@ -124,12 +142,7 @@ universal
   * for remote API calls: RemoteCKAN
   * in tests: TestAppCKAN
 
-core?
------
-
-* ckan/lib/cli.py
-
-ckanapi python library
+ckanapi Python library
 ----------------------
 
 .. code-block:: bash
@@ -140,24 +153,24 @@ ckanapi python library
 
     import ckanapi
 
-command-line client
+Command-line client
 -------------------
 
 * single + bulk actions
 * easy to pipeline
 * local + remote
 
-single actions
+Single actions
 --------------
 
-* pass strings and files as simple parameters
+* pass strings as simple parameters
 
 .. code-block:: bash
 
     ckanapi action package_create name=best-dataset title="Best evar"
-    ckanapi action resource_create package_id=best-dataset upload=@mydata.csv
+    ckanapi action package_list
 
-bulk actions
+Bulk actions
 ------------
 
 .. code-block:: bash
@@ -166,7 +179,7 @@ bulk actions
     ckanapi dump organizations
     ckanapi dump groups
 
-bulk actions
+Bulk actions
 ------------
 
 .. code-block:: bash
@@ -175,7 +188,7 @@ bulk actions
     ckanapi load organizations
     ckanapi load groups
 
-bulk actions
+Bulk actions
 ------------
 
 .. code-block:: bash
@@ -184,7 +197,7 @@ bulk actions
     ckanapi load organizations -p 3
     ckanapi load groups -p 3
 
-pipelining
+Pipelining
 ----------
 
 .. code-block:: bash
@@ -204,9 +217,9 @@ Bulk Data Format
 ----------------
 
 * JSON Lines
-* consistent order and sorted keys
+* Consistent order with sorted keys
 
-track metadata in git
+Track metadata in git
 ---------------------
 
 .. code-block:: bash
@@ -217,17 +230,17 @@ track metadata in git
     datasets.jsonl | 52 ++++++++++++++++++++++++++++++++++++----------------
     1 file changed, 36 insertions(+), 16 deletions(-)
 
-distributed load
+Distributed load
 ----------------
 
 .. code-block:: bash
 
-    split -n l/3 datasets.jsonl
-    ckanapi load datasets -r http://web1 -a ... < xaa &
-    ckanapi load datasets -r http://web2 -a ... < xab &
-    ckanapi load datasets -r http://web3 -a ... < xac &
+    split -n l/3 datasets.jsonl part
+    ckanapi load datasets -r http://web1 -a ... < partaa &
+    ckanapi load datasets -r http://web2 -a ... < partab &
+    ckanapi load datasets -r http://web3 -a ... < partac &
 
-summaries
+Summaries
 ---------
 
 .. code-block:: bash
@@ -240,7 +253,7 @@ summaries
     "Canadian Dairy Exports Month Calendar Year 2001 September"
     "Federal Corporations"
 
-reports
+Reports
 -------
 
 .. code-block:: bash
@@ -257,14 +270,14 @@ command-line client
     pip install ckanapi
     ckanapi -h
 
-layers of ckan
---------------
+CKAN layers
+-----------
 
 .. image:: ckan-layers2.png
    :scale: 50%
 
-layers of ckan
---------------
+CKAN layers
+-----------
 
 .. image:: ckan-layers3.png
    :scale: 50%
@@ -273,26 +286,24 @@ layers of ckan
 IDatasetForm is awesome
 -----------------------
 
-* define one or more dataset types
-* custom templates for edit + show
-* new metadata fields
-* custom validation rules for dataset + resource fields
+* Define dataset types
+* Custom templates for edit + show
+* New fields + validation rules for datasets + resources
 
 IDatasetForm is hard
 --------------------
 
 * Python plugin code
-* nested Jinja2 templates with macros
-* navl schema
-* navl validators
+* Nested Jinja2 templates
+* navl schema + validators
 
 ckanext-scheming is easier
 --------------------------
 
-* No code required
-* Templates for common field types included
-* Combined JSON or YAML schema
-* Add validators with a simple IValidators plugin
+* Code optional
+* Templates included
+* Combined JSON schema
+  * Add validators with IValidators
 
 ckanext-scheming is sharable
 ----------------------------
@@ -300,7 +311,51 @@ ckanext-scheming is sharable
 * scheming_dataset_schema_list
 * scheming_dataset_schema_show
 
+Example schema
+--------------
 
+.. code-block:: json
+
+    {
+      "dataset_type": "camel-photos",
+      "dataset_fields": [
+	{
+	  "field_name": "title",
+	  "label": "Title",
+	  "preset": "title",
+	  "form_placeholder": "eg. Larry, Peter, Susan"
+	},
+	{
+	  "field_name": "name",
+	  "label": "URL",
+	  "preset": "dataset_slug",
+	  "form_placeholder": "eg. camel-no-5"
+	},
+
+Example schema
+--------------
+
+.. code-block:: json
+
+    {
+      "field_name": "humps",
+      "label": "Humps",
+      "validators": "ignore_missing int_validator",
+      "form_placeholder": "eg. 2"
+    },
+    {
+      "field_name": "category",
+      "label": "Category",
+      "help_text": "Make and model",
+      "help_inline": true,
+      "preset": "select",
+      "choices": [
+        {
+          "value": "bactrian",
+          "label": "Bactrian Camel"
+        },
+        {
+          "value": "hybrid",
 
 future
 ------
