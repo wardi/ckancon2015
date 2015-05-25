@@ -121,7 +121,7 @@ ckanapi
 Python library
 --------------
 
-pass strings, lists, dicts, file objects like normal method calls
+Pass strings, lists, dicts, file objects like normal method calls
 
 .. code-block:: python
 
@@ -135,20 +135,21 @@ pass strings, lists, dicts, file objects like normal method calls
 Safe
 ----
 
-* raises exceptions on errors, no manual error checking
-* clean context and data_dict for every call
-* has great test coverage
+* Raises exceptions on errors, no manual error checking
+* Clean context and data_dict for every call
 
 Universal
 ---------
 
-* python 2.6, 2.7, 3.2, 3.3, 3.4 (source-compatible)
-* generic, no per-action custom code
-* same interface for use
+* Python 2.6, 2.7, 3.2+ (source-compatible)
+* Generic, no per-action custom code
 
-  * from core or extensions: LocalCKAN
-  * for remote API calls: RemoteCKAN
-  * in tests: TestAppCKAN
+Consistent interface
+--------------------
+
+* LocalCKAN for core or extensions
+* RemoteCKAN for remote API calls
+* TestAppCKAN for tests
 
 ckanapi Python library
 ----------------------
@@ -164,14 +165,14 @@ ckanapi Python library
 Command-line client
 -------------------
 
-* single + bulk actions
-* easy to pipeline
-* local + remote
+* Single and bulk actions
+* Easy to pipeline
+* Local and remote
 
 Single actions
 --------------
 
-* pass strings as simple parameters
+Pass strings as simple parameters
 
 .. code-block:: bash
 
@@ -210,16 +211,14 @@ Pipelining
 
 .. code-block:: bash
 
-    ckanapi dump datasets \
-        | ssh otherbox ckanapi load datasets -p 3
+    ckanapi dump datasets | ssh otherbox ckanapi load datasets -p 3
 
-local + remote
---------------
+Local and remote
+----------------
 
 .. code-block:: bash
 
-    ckanapi dump datasets -r http://sourceckan \
-        | ckanapi load datasets -p 3
+    ckanapi dump datasets -r http://sourceckan | ckanapi load datasets -p 3
 
 Bulk Data Format
 ----------------
@@ -270,7 +269,7 @@ Reports
 
     8613
 
-command-line client
+Command-line client
 -------------------
 
 .. code-block:: bash
@@ -311,7 +310,7 @@ ckanext-scheming is easier
 * Code optional
 * Templates included
 * Combined JSON schema
-  * Add validators with IValidators
+* Custom validators with IValidators
 
 ckanext-scheming is sharable
 ----------------------------
@@ -330,14 +329,17 @@ Example schema
 	{
 	  "field_name": "title",
 	  "label": "Title",
-	  "preset": "title",
-	  "form_placeholder": "eg. Larry, Peter, Susan"
+	  "form_placeholder": "eg. Larry, Peter, Susan",
+	  "form_snippet": "large_text.html",
+	  "form_attrs": { "data-module": "slug-preview-target" },
+	  "validators": "if_empty_same_as(name) unicode"
 	},
 	{
 	  "field_name": "name",
 	  "label": "URL",
-	  "preset": "dataset_slug",
-	  "form_placeholder": "eg. camel-no-5"
+	  "form_placeholder": "eg. camel-no-5",
+	  "form_snippet": "slug.html",
+	  "validators": "not_empty unicode name_validator package_name_validator"
 	},
 
 Example schema
@@ -346,31 +348,86 @@ Example schema
 .. code-block:: json
 
     {
-      "field_name": "humps",
-      "label": "Humps",
-      "validators": "ignore_missing int_validator",
-      "form_placeholder": "eg. 2"
-    },
-    {
-      "field_name": "category",
-      "label": "Category",
-      "help_text": "Make and model",
-      "help_inline": true,
-      "preset": "select",
-      "choices": [
-        {
-          "value": "bactrian",
-          "label": "Bactrian Camel"
-        },
-        {
-          "value": "hybrid",
+      "dataset_type": "camel-photos",
+      "dataset_fields": [
+	{
+	  "field_name": "title",
+	  "label": "Title",
+	  "form_placeholder": "eg. Larry, Peter, Susan",
+	  "preset": "title"
 
-future
+
+	},
+	{
+	  "field_name": "name",
+	  "label": "URL",
+	  "form_placeholder": "eg. camel-no-5",
+	  "preset": "dataset_slug"
+
+	},
+
+Example schema
+--------------
+
+.. code-block:: json
+
+	{
+	  "field_name": "category",
+	  "label": "Category",
+	  "help_text": "Make and model",
+	  "help_inline": true,
+	  "preset": "select",
+	  "choices": [
+	    { "value": "bactrian", "label": "Bactrian Camel" },
+	    { "value": "hybrid", "label": "Hybrid Camel" },
+	    { "value": "f2hybrid", "label": "F2 Hybrid Camel" },
+	    { "value": "snowwhite", "label": "Snow-white Dromedary" },
+	    { "value": "black", "label": "Black Camel" }
+	  ]
+	},
+
+Example schema
+--------------
+
+.. code-block:: json
+
+
+	{
+	  "field_name": "personality",
+	  "label": "Personality",
+	  "preset": "multiple_checkbox",
+	  "choices": [
+	    { "value": "friendly", "label": "Often friendly" },
+	    { "value": "jealous", "label": "Jealous of others" },
+	    { "value": "spits", "label": "Tends to spit" }
+	  ]
+	},
+	{
+	  "field_name": "a_relevant_date",
+	  "label": "A relevant date",
+	  "preset": "date"
+	},
+
+Example form
+------------
+
+.. image:: scheming-form.png
+   :scale: 63%
+
+Future
 ------
 
-* IGroupForm for groups and organizations
-* ckanext-fluent
-* http://open.canada.ca
+* Groups and organizations
+* Search facets
+* Schema registry?
 
+ckanapi and ckanext-scheming
+----------------------------
 
+* `github.com/ckan/ckanapi <https://github.com/ckan/ckanapi>`_
+* `github.com/open-data/ckanext-scheming <https://github.com/open-data/ckanext-scheming>`_
 
+Questions?
+==========
+
+ian@datacats.com
