@@ -53,6 +53,9 @@ ckanext-recombinant
 
 `github.com/open-data/ckanext-recombinant <https://github.com/open-data/ckanext-recombinant>`_
 
+.. image:: recombinant.png
+   :scale: 50%
+
 CKAN Multisite
 --------------
 
@@ -80,11 +83,16 @@ ckanapi
 
 `github.com/ckan/ckanapi <https://github.com/ckan/ckanapi>`_
 
+.. image:: ckanapi.png
+   :scale: 55%
 
 ckanext-scheming
 ----------------
 
 `github.com/open-data/ckanext-scheming <https://github.com/open-data/ckanext-scheming>`_
+
+.. image:: scheming.png
+   :scale: 55%
 
 I ♥ CKAN
 --------
