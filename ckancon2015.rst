@@ -127,7 +127,8 @@ Pass strings, lists, dicts, file objects like normal method calls
 
     import ckanapi
 
-    ckan = ckanapi.LocalCKAN()
+    ckan = ckanapi.RemoteCKAN('http://exampleckan', apikey=...)
+
     with open('mydata.csv') as csv:
         ckan.action.package_create(name='best-dataset', title='Best evar')
         ckan.action.resource_create(package_id='best-dataset', upload=csv)
@@ -220,7 +221,7 @@ Local and remote
 
     ckanapi dump datasets -r http://sourceckan | ckanapi load datasets -p 3
 
-Bulk Data Format
+Bulk data format
 ----------------
 
 * JSON Lines
