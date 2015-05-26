@@ -62,7 +62,7 @@ CKAN Multisite
 `github.com/boxkite/ckan-multisite <https://github.com/boxkite/ckan-multisite/>`_
 
 .. image:: ckan-multisite.png
-   :scale: 180%
+   :scale: 40%
 
 datacats
 --------
@@ -101,13 +101,13 @@ CKAN layers
 -----------
 
 .. image:: ckan-layers0.png
-   :scale: 50%
+   :scale: 15%
 
 Extending CKAN
 --------------
 
 .. image:: ckan-layers1.png
-   :scale: 50%
+   :scale: 15%
 
 ckanapi
 -------
@@ -162,6 +162,10 @@ ckanapi Python library
 .. code-block:: python
 
     import ckanapi
+
+`github.com/ckan/ckanapi <https://github.com/ckan/ckanapi>`_
+
+`CKAN Action API Reference <docs.ckan.org/en/latest/api/index.html#action-api-reference>`_
 
 Command-line client
 -------------------
@@ -282,13 +286,13 @@ CKAN layers
 -----------
 
 .. image:: ckan-layers2.png
-   :scale: 50%
+   :scale: 15%
 
 CKAN layers
 -----------
 
 .. image:: ckan-layers3.png
-   :scale: 50%
+   :scale: 15%
 
 
 IDatasetForm is awesome
